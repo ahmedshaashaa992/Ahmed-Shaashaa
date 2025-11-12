@@ -1222,14 +1222,15 @@
                         <h3>Lead Software Engineer</h3>
                         <div class="company">Taconic GmbH, Leverkusen (Remote)</div>
                         <div class="date">2021-04 - Current</div>
-                        <ul>
+                        <p class="summary">Led development of scalable ERP systems using Django and React, modernizing infrastructure and mentoring engineers.</p>
+<div class="details" style="display: none;"><ul>
                             <li>Engineered scalable REST APIs and full-stack features with Django and React for a critical ERP platform, enhancing data management and user experience.</li>
                             <li>Led the design of software solutions and integration of third-party systems (Boomi, NetSuite), improving system performance and data flow.</li>
                             <li>Modernized and maintained legacy bioinformatics systems, ensuring stability and reliability.</li>
                             <li>Mentored junior engineers in Agile methodologies, fostering a collaborative team environment and improving project delivery timelines.</li>
                             <li>Performed complex SQL data analysis and fixes to ensure data integrity for business operations and shipments.</li>
                             <li>Consistently managed and resolved an average of 30+ support tickets per month, maintaining high customer satisfaction and system reliability.</li>
-                        </ul>
+                        </ul></div><button class="toggle-btn">Show More</button>
                     </div>
                 </div>
                 
@@ -1238,12 +1239,13 @@
                         <h3>Software Engineer</h3>
                         <div class="company">Weisskopf21, Düsseldorf (Remote)</div>
                         <div class="date">2018-06 - 2020-03</div>
-                        <ul>
+                        <p class="summary">Developed OCR and banking automation tools, improving text recognition and financial workflows.</p>
+<div class="details" style="display: none;"><ul>
                             <li>Led the full lifecycle development of the 'AIP_OCR' project, leveraging 'OpenCV' and Python to enhance text recognition accuracy through advanced image pre-processing and post-processing techniques.</li>
                             <li>Achieved Avalog Certified Customization Professional status, earning specialization in tailoring the Avalog Banking Suite for client-specific financial workflows.</li>
                             <li>Designed, built, and launched company websites and blogs, including Weisskopf21.com, using WordPress to meet marketing and business objectives.</li>
                             <li>Collaborated with cross-functional teams to define project requirements and deliver high-quality software products on schedule.</li>
-                        </ul>
+                        </ul></div><button class="toggle-btn">Show More</button>
                     </div>
                 </div>
                 
@@ -1252,13 +1254,14 @@
                         <h3>Junior Software Developer</h3>
                         <div class="company">Kantar GmbH, Saarlouis</div>
                         <div class="date">2018-06 - 2020-03</div>
-                        <ul>
+                        <p class="summary">Built full-stack applications and delivered research projects from concept to deployment.</p>
+<div class="details" style="display: none;"><ul>
                             <li>Engineered full-stack web applications for research and data analysis, enabling precise measurement and evaluation.</li>
                             <li>Architected and integrated custom software solutions for international clients, translating complex requirements into technical specifications.</li>
                             <li>Drove the end-to-end product lifecycle from requirements engineering and development to operational testing and deployment in a DevOps capacity.</li>
                             <li>Independently led and delivered research projects from conception through to documentation and presentation of results.</li>
                             <li>Developed and maintained software applications using Java and Python, enhancing system performance and user experience.</li>
-                        </ul>
+                        </ul></div><button class="toggle-btn">Show More</button>
                     </div>
                 </div>
                 
@@ -1267,14 +1270,15 @@
                         <h3>Trainee</h3>
                         <div class="company">Kantar Media GmbH, Saarlouis</div>
                         <div class="date">2018-06 - 2020-03</div>
-                        <ul>
+                        <p class="summary">Supported software project planning, testing, and requirements documentation at Kantar Media.</p>
+<div class="details" style="display: none;"><ul>
                             <li>Participation in projects with a focus on the technical implementation of customer-specific programs.</li>
                             <li>Case-by-case support in project planning.</li>
                             <li>Determination, documentation and management of requirements.</li>
                             <li>Participation in the creation of specialist concepts, specifications, and cost estimates.</li>
                             <li>Conception of technical test scenarios and execution of tests.</li>
                             <li>Collaborated with cross-functional teams to streamline data collection processes, enhancing overall efficiency and accuracy.</li>
-                        </ul>
+                        </ul></div><button class="toggle-btn">Show More</button>
                     </div>
                 </div>
                 
@@ -1283,11 +1287,12 @@
                         <h3>Financial Accountant</h3>
                         <div class="company">OXYgym, Aleppo</div>
                         <div class="date">2014-10 - 2017-03</div>
-                        <ul>
+                        <p class="summary">Managed financial records, marketing, and payment systems for OXYgym.</p>
+<div class="details" style="display: none;"><ul>
                             <li>Administration of finances and company accounts, booking of business transactions, monitoring / execution of payment transactions.</li>
                             <li>Administration of the electronic access system.</li>
                             <li>Responsible for advertising and marketing measures.</li>
-                        </ul>
+                        </ul></div><button class="toggle-btn">Show More</button>
                     </div>
                 </div>
             </div>
@@ -1647,6 +1652,44 @@
         
         // Check on scroll
         window.addEventListener('scroll', animateSkillBars);
-    </script>
+    
+// Show More / Show Less functionality for timeline items
+document.querySelectorAll('.timeline-item').forEach(item => {
+    const btn = item.querySelector('.toggle-btn');
+    const details = item.querySelector('.details');
+    const summary = item.querySelector('.summary');
+    if (!btn || !details) return;
+
+    btn.style.background = 'none';
+    btn.style.border = 'none';
+    btn.style.color = 'var(--primary)';
+    btn.style.cursor = 'pointer';
+    btn.style.fontWeight = '600';
+    btn.style.marginTop = '12px';
+    btn.style.transition = 'color 0.3s ease';
+
+    btn.addEventListener('mouseover', () => btn.style.color = 'var(--accent)');
+    btn.addEventListener('mouseout', () => btn.style.color = 'var(--primary)');
+
+    btn.addEventListener('click', () => {
+        const isVisible = details.style.display === 'block';
+        if (isVisible) {
+            details.style.opacity = '1';
+            details.style.transition = 'opacity 0.3s ease';
+            details.style.opacity = '0';
+            setTimeout(() => details.style.display = 'none', 300);
+            btn.textContent = 'Show More';
+        } else {
+            details.style.display = 'block';
+            details.style.opacity = '0';
+            setTimeout(() => {
+                details.style.transition = 'opacity 0.3s ease';
+                details.style.opacity = '1';
+            }, 10);
+            btn.textContent = 'Show Less';
+        }
+    });
+});
+</script>
 </body>
 </html>
